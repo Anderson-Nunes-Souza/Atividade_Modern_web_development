@@ -11,6 +11,7 @@ import { User } from "@/model/user";
 import MySelect from "../../components/select_list";
 import { Roles } from "@/model/roles";
 import { rolesService } from "@/services/roles.service";
+import Input from "../../components/input";
 
 export default function UserPage() {
   const router = useRouter();
@@ -143,30 +144,34 @@ export default function UserPage() {
             type="password"
             onChange={(event) => setPassConfirm(event.target.value)}
           />
-          <MySelect
-            label="Roles"
+        </div>
+        <div className={styles.inputRoles}>
+
+        <MySelect
+            label="Roles "
             multiple={true}
             rolesLista={rolesLista}
             value={roles}
             defaultValue={roles}
             onChange={(e) => {
-              let rolesArray: string[] = [];
-              const options = [e.target.selectedOptions];
-              const optionArray = options.map((option) => option);
-
-              optionArray.forEach(function (elemento, chave) {
-                console.log("entoru no foreach", elemento, chave);
-                for (let index = 0; index < elemento.length; index++) {
-                  const element = elemento[index];
-                  console.log(element.value);
-                  rolesArray.push(element.value);
-                }
-              });
-              console.log("array roles ->", rolesArray);
-              setRoles(rolesArray);
+                let rolesArray: string[] = [];
+                const options = [e.target.selectedOptions];
+                const optionArray = options.map((option) => option);
+                
+                optionArray.forEach(function (elemento, chave) {
+                    for (let index = 0; index < elemento.length; index++) {
+                        const element = elemento[index];
+                        console.log(element.value);
+                        rolesArray.push(element.value);
+                    }
+                });
+                console.log("array roles ->", rolesArray);
+                setRoles(rolesArray);
             }}
-          />
-        </div>
+            /> <span className={styles.rodapeRoles}>
+                (Selecionar multiplos: Segure Shift + Click com o mouse)
+            </span>
+            </div>
 
         <button className={styles.button} onClick={save}>
           Salvar

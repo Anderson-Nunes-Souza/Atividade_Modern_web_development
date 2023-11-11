@@ -17,3 +17,17 @@
     padding: 10px 0px 10px 0px;
     background-color: cadetblue;
 }
+
+.rodapeRoles{
+    margin-top: 5px;
+    font-size: small;
+    font-style: italic;
+    font-weight: bold;
+}
+
+.inputRoles{
+    display: flex;
+    align-items: flex-end;
+    flex-direction: column;
+    justify-content: flex-end;
+}
