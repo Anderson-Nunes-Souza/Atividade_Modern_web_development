@@ -21,10 +21,6 @@ export default function NewRolePage(){
   const [permissions, setPermissions] = React.useState("");
   const [description, setDescription] = React.useState("");
 
-  React.useEffect(() => {
-    const user = authService.getLoggedUser()
-    if (!user) router.replace('/login')
-} , [])
 
 React.useEffect(() => {
     if (params && params.id) {
@@ -35,72 +31,34 @@ React.useEffect(() => {
     }
 }, [params])
 
-/* React.useEffect(() => {
-    if (id > 0) {
-        userService.get(id).then(user => {
-            setName(user.name)
-            setUsername(user.username)
-        }).catch(treat)
-    }
-}, [id])
-
-function treat(error: any) {
-    if (authService.isUnauthorized(error)) {
-        router.replace('/login')
-    } else {
-        alert(`${username}: ${error.message}`)
-    }
-}
 
 async function save() {
+    router.replace('/roles')
+
     if (!name || name.trim() === '') {
         alert('Nome é obrigatório')
         return
+    } if (!permissions || permissions.trim() ===''){
+        alert('Permissão é obrigatório')
+        return
+}else
+  await rolesService.create({ name, permissions, description })
+  router.back()
+
+  try{
+    if (id > 0) { // editar um usuário
+        let body = { name, permissions, description } as Roles
+        
+        if (name && name.trim() !== '' && permissions && permissions.trim()== '') {
+            body = { ...body}
+        }
+        await rolesService.update(id,body)
+        router.back()
     }
 
-    if (id === 0 || password.trim() !== '') {
-        if (!password || password.trim() === '') {
-            alert('Senha é obrigatória')
-            return
-        }
-        if (password !== passConfirm) {
-            alert('A Senha não confere')
-            return
-        }
-    }
-
-    try {
-        if (id > 0) { // editar um usuário
-            let body = {name, description, permissions } as Roles
-            
-            if (password && password.trim() !== '') {
-                body = { ...body, password }
-            }
-            await userService.update(id, body)
-            router.back()
-
-        } else { // Criar um novo
-            if (!username || username.trim() === '') {
-                alert('Login é obrigatório')
-                return
-            }if (roles === null || roles.trim() === ''){
-                alert('Insira uma Role para o usuário')
-                return
-            }else{
-                await userService.update
-            }
-    
-            await userService.create({ name, username, password, roles })
-            router.back()
-        }
-    } catch (error: any) {
-        treat(error)
-    }
-} */
-
-async function save() {
-  await rolesService.create({ name, description, permissions })
-
+  }catch(error: any){
+    console.log(error)
+  }
 }
 
 
@@ -120,7 +78,6 @@ return (
                 <MyInput
                     label='Permissão'
                     value={permissions}
-                    readOnly={id > 0}
                     onChange={event => setPermissions(event.target.value)}
                 />
                 <MyInput
