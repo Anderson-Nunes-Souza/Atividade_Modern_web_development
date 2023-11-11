@@ -21,8 +21,8 @@ export default function HomePage() {
         router.push('/user/0')
     }
 
-    function goToNewRoles(){
-        router.push('/new_roles/')
+    function goToRoles(){
+        router.push('/roles/')
     }
 
     function treat(error: any) {
@@ -67,7 +67,7 @@ export default function HomePage() {
                         <button onClick={goToUser}>Add</button>
                     </div>
                     <div>
-                        <button onClick={goToNewRoles}> Adicionar Role</button>
+                        <button onClick={goToRoles}>Roles de Usuários</button>
                     </div>
                 </div>
 

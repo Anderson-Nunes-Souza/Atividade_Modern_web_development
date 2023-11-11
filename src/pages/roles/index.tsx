@@ -1,24 +1,37 @@
 // pages/roles.js
 import React from "react";
+import styles from "./styles.module.css";
+import { useRouter } from "next/router";
+import { Roles } from "@/model/roles";
+//import { RolesService } from "@/services/roles.service";
 
-const rolesData = [
-  { id: 1, name: "Role 1" },
-  { id: 2, name: "Role 2" },
-  { id: 3, name: "Role 3" },
-  {id: 4, name: 'Role 4' }
-];
+type Props = {
+  roles: Roles[],
+  edit?: (id: number) => void,
+  remove?: (id: number) => void
+}
 
-const RolesPage = () => {
+
+export default function RolesPage({roles, edit, remove}: Props) {
+  const router = useRouter();
+
+function goToNewRoles() {
+  router.push(`/new_roles/`);
+}
+
   return (
     <div>
       <h1>Lista de Roles dos Usuários</h1>
-      <ul>
-        {rolesData.map((role) => (
-          <li key={role.id}>{role.name}</li>
+      <div>
+        {roles?.map((role) => (
+          <div key={role.id}>{role.name}{role.permissions}{role.description}</div>
         ))}
-      </ul>
+      </div>
+      <div>
+        <button onClick={goToNewRoles}>Roles de Usuários</button>
+      </div>
+      <div>
+      </div>
     </div>
   );
-};
-
-export default RolesPage;
+}

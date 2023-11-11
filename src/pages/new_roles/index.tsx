@@ -18,7 +18,7 @@ const NewRolePage = () => {
     e.preventDefault();
   
     try {
-      const response = await fetch("/api/roles", {
+      const response = await fetch('/roles/'+ roleData, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -27,7 +27,7 @@ const NewRolePage = () => {
       });
   
       if (response.ok) {
-        // A Role foi cadastrada com sucesso, você pode redirecionar o usuário ou exibir uma mensagem de sucesso.
+
       } else {
         // Lida com erros, por exemplo, exibindo uma mensagem de erro.
       }
