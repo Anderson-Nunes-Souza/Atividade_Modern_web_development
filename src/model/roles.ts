@@ -2,7 +2,7 @@ export interface Roles {
 
     id?: number
     name: string
-    permissions: [],
+    permissions: string,
     description: String,
 
 }

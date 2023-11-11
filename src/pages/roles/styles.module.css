@@ -1,19 +1,10 @@
-.main {
-    justify-content: flex-start;
-}
-
-.inputs {
+.homeHeader {
+    width: 100%;
     display: flex;
-    align-items: flex-end;
-    flex-direction: column;
-    justify-content: flex-end;
+    margin-bottom: 40px;
+    justify-content: space-between;
 }
 
-.button {
-    width: 200px;
-    font-size: 18px;
+.homeMain {
     margin-top: 40px;
-    border-radius: 3px;
-    padding: 10px 0px 10px 0px;
-    background-color: cadetblue;
 }
