@@ -42,14 +42,14 @@ async function save() {
         alert('Permissão é obrigatório')
         return
 }else
-  await rolesService.create({ name, permissions, description })
-  router.back()
+  await rolesService.create({ name, description })
+  router.replace('/roles')
 
   try{
     if (id > 0) { // editar um usuário
-        let body = { name, permissions, description } as Roles
+        let body = { name, description } as Roles
         
-        if (name && name.trim() !== '' && permissions && permissions.trim()== '') {
+        if (name && name.trim() !== '' && description && description.trim()== '') {
             body = { ...body}
         }
         await rolesService.update(id,body)

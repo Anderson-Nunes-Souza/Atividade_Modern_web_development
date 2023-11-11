@@ -15,9 +15,7 @@ export default function ListaRoles ({ roles, edit, remove }: Props) {
                     <div key={role.id} className={styles.lineItem}>
                         <span className={styles.id}>{role.id}</span>
                         <span className={styles.nameLabel}>{role.name}</span>
-                        <span className={styles.nameLabel}>{role.permissions}</span>
                         <span className={styles.nameLabel}>{role.description}</span>
-
                         <div>
                             { edit && (
                                 <button
