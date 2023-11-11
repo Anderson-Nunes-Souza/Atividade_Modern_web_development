@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Head from "next/head";
 
-import { useParams, useRouter, useSearchParams } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 
 import MyInput from "../../components/input";
 import styles from "./styles.module.css";
@@ -10,6 +10,7 @@ import { authService } from "@/services/auth.service";
 import { User } from "@/model/user";
 import MySelect from "../../components/select_list";
 import { Roles } from "@/model/roles";
+import { rolesService } from "@/services/roles.service";
 
 export default function UserPage() {
   const router = useRouter();
@@ -29,6 +30,13 @@ export default function UserPage() {
     const user = authService.getLoggedUser();
     if (!user) router.replace("/login");
   }, []);
+
+  React.useEffect(fetchRoles, [])
+  function fetchRoles() {
+      rolesService.getList()
+          .then(list => setRolesLista(list))
+          .catch(treat)
+  }
 
   React.useEffect(() => {
     if (params && params.id) {

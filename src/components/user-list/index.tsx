@@ -1,4 +1,5 @@
 import { User } from "@/model/user"
+import { Roles } from "@/model/roles"
 
 import styles from './styles.module.css'
 
@@ -18,6 +19,7 @@ export default function UserList({ users, edit, remove }: Props) {
                         <span className={styles.id}>{user.id}</span>
                         <span className={styles.nameLabel}>{user.name}</span>
                         <span className={styles.usernameLabel}>{user.username}</span>
+                        <span className={styles.usernameLabel}>{user.roles}</span>
                         <div>
                             { edit && (
                                 <button
