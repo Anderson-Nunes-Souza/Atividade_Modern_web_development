@@ -1,3 +1,9 @@
+## Participantes do Projeto
+
+- Anderson Nunes Souza: RA: 2302209
+- Ivan Comodo : RA: 2302179 
+- Gabriel Henrique: RA: 2300959
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
